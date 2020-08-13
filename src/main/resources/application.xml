@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        전통적인 xml을 이용한 빈등록방법
+        일일이 이렇게 등록하는 작업은 굉장히 불편함.
+        그래서 등장한게 @ComponentScan임.
+    -->
+    <bean id="beanReg" class="com.hoon.beanReg.BeanReg">
+        <property name="beanRegRepository" ref="beanRegRepository"/>  <!-- 빈을 주입해주기 위해서 property 정의. name은 setter에서 가져오고, ref는 빈의 id가 와야함 다른 빈을 참조한다. -->
+    </bean>
+
+    <bean id="beanRegRepository" class="com.hoon.beanReg.BeanRegRepository"/>
+
+    <context:component-scan base-package="com.hoon"></context:component-scan>
+
+</beans>
