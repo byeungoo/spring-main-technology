@@ -1,9 +1,12 @@
 package com.hoon.book;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class BookService {
@@ -13,6 +16,18 @@ public class BookService {
     public BookService(BookRepository bookRepository){
         this.bookRepository = bookRepository;
     }
+
+    @Autowired(required = false) //optional 설정
+    public void setBookRepository(BookRepository bookRepository){
+        this.bookRepository = bookRepository;
+    }
+
+    @Autowired
+    @Qualifier("myBookRepo")  //주입할 빈 이름 명시
+    BookRepo bookRepo;
+
+    @Autowired
+    List<BookRepo> bookRepoList;  //해당 타입의 모든 빈 주입
 
     public Book save(Book book){
         book.setCreated(new Date());
@@ -28,4 +43,8 @@ public class BookService {
         System.out.println("==========================");
     }
 
+    public void printBookRepo() {
+
+        System.out.println(bookRepo.getClass());
+    }
 }
