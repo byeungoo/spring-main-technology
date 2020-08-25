@@ -1,4 +1,4 @@
-package com.hoon;
+package com.hoon.scope;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
