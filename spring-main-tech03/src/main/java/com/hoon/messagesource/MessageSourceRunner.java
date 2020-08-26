@@ -20,7 +20,7 @@ public class MessageSourceRunner implements ApplicationRunner {
             System.out.println(messageSource.getMessage("greeting", new String[]{"hoon"}, Locale.KOREA));
             System.out.println(messageSource.getMessage("greeting", new String[]{"hoon"}, Locale.US));
             System.out.println(messageSource.getMessage("greeting", new String[]{"hoon"}, Locale.getDefault()));
-            Thread.sleep(1000L);
+            Thread.sleep(10000L);
         }
 
     }
